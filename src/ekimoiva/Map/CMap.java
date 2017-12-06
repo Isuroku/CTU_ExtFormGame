@@ -1,12 +1,7 @@
 package ekimoiva.Map;
 
-
 import ekimoiva.Rect2D;
 import ekimoiva.Vector2D;
-
-import java.util.ArrayList;
-import java.util.Collections;
-
 
 public class CMap
 {
@@ -60,7 +55,7 @@ public class CMap
         return c.IsPassable();
     }
 
-    private CMapCell GetCell(Vector2D inCoord)
+    public CMapCell GetCell(Vector2D inCoord)
     {
         int index = CoordToIndex(inCoord);
 

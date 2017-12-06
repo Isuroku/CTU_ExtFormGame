@@ -1,5 +1,7 @@
 package ekimoiva;
 
+import javafx.util.Pair;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Iterator;
@@ -95,28 +97,28 @@ public class Vector2D
         return res;
     }
 
-    public Vector2D[] GetNeighbours(Rect2D inZone)
+    public Pair<Character, Vector2D>[] GetNeighbours(Rect2D inZone)
     {
-        ArrayList<Vector2D> arr = new ArrayList<>();
+        ArrayList<Pair<Character, Vector2D>> arr = new ArrayList<>();
 
         int nx = x - 1;
-        if(inZone == null || (nx >= inZone.Left && nx <= inZone.Right))
-            arr.add(new Vector2D(nx, y));
+        if(inZone == null || (nx >= inZone.Left && nx < inZone.Right))
+            arr.add(new Pair<>('l', new Vector2D(nx, y)));
 
         nx = x + 1;
-        if(inZone == null || (nx >= inZone.Left && nx <= inZone.Right))
-            arr.add(new Vector2D(nx, y));
+        if(inZone == null || (nx >= inZone.Left && nx < inZone.Right))
+            arr.add(new Pair<>('r', new Vector2D(nx, y)));
 
         int ny = y - 1;
-        if(inZone == null || (ny >= inZone.Top && ny <= inZone.Bottom))
-            arr.add(new Vector2D(x, ny));
+        if(inZone == null || (ny >= inZone.Top && ny < inZone.Bottom))
+            arr.add(new Pair<>('u', new Vector2D(x, ny)));
 
         ny = y + 1;
-        if(inZone == null || (ny >= inZone.Top && ny <= inZone.Bottom))
-            arr.add(new Vector2D(x, ny));
+        if(inZone == null || (ny >= inZone.Top && ny < inZone.Bottom))
+            arr.add(new Pair<>('d', new Vector2D(x, ny)));
 
-        Collections.shuffle(arr);
-        return arr.toArray(new Vector2D[arr.size()]);
+        //Collections.shuffle(arr);
+        return arr.toArray(new Pair[arr.size()]);
     }
 
     public ArrayList<Vector2D> GetNeighbourhoodPoses(Rect2D inZone, int inDist)

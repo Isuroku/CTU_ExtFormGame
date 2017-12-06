@@ -2,7 +2,7 @@ package ekimoiva.Map;
 
 import ekimoiva.Vector2D;
 
-class CMapCell //implements Comparable<CMapCell>
+public class CMapCell //implements Comparable<CMapCell>
 {
     private Vector2D _pos;
     private CellType _type;
@@ -20,7 +20,7 @@ class CMapCell //implements Comparable<CMapCell>
     @Override
     public String toString()
     {
-        return String.format("%s: %d", _pos, _type);
+        return String.format("%s: %s", _pos, _type);
     }
 
     //@Override
