@@ -2,6 +2,10 @@ package ekimoiva;
 
 import ekimoiva.Map.CMap;
 import ekimoiva.Map.CMapCell;
+
+import ilog.concert.*;
+import ilog.cplex.IloCplex;
+
 import javafx.util.Pair;
 
 import java.io.IOException;
@@ -125,8 +129,11 @@ public class Main
         return line;
     }
 
-    public static void main(String[] args) throws IOException
+    public static void main(String[] args) throws IOException, IloException
     {
+        //SolveTest();
+
+
         String line = ReadLine(args);
         int line_count = -2;
 
@@ -180,7 +187,7 @@ public class Main
         CreateTree(root, map, kill_probability);
     }
 
-    static void CreateTree(CNode root, CMap map, float kill_probability)
+    static void CreateTree(CNode root, CMap map, float kill_probability) throws IloException
     {
         System.out.printf("\n");
         ArrayList<CStrategiesUtil> strategies = new ArrayList<>();
@@ -278,6 +285,63 @@ public class Main
                 int sz = strategies.size();
                 System.out.printf("%d: %s\n", sz, u);
             }
+        }
+    }
+
+    static void SolveTest()
+    {
+        double[] koefs = {41, 35, 96};
+        double[][] constrains_koef = {{2, 3, 7}, {1, 1, 0}, {5, 3, 0}, {0.6, 0.25, 1}};
+        double[] constrains_results = {1250, 250, 900, 232.5};
+
+        solveModel(koefs, true, constrains_koef, constrains_results);
+    }
+
+    public static void solveModel(double[] koefs, boolean x_non_negative, double[][] constrains_koef, double[] constrains_results)
+    {
+        try
+        {
+            IloCplex model = new IloCplex();
+
+            IloNumVar[] x = new IloNumVar[koefs.length];
+
+            if(x_non_negative)
+            {
+                for(int i = 0; i < koefs.length; ++i)
+                    x[i] = model.numVar(0, Double.MAX_VALUE);
+            }
+
+            IloLinearNumExpr obj = model.linearNumExpr();
+            for(int i = 0; i < koefs.length; ++i)
+                obj.addTerm(koefs[i], x[i]);
+
+            model.addMinimize(obj);
+
+            for(int i =0; i < constrains_koef.length; i++)
+            {
+                IloLinearNumExpr constrain = model.linearNumExpr();
+                for(int j = 0; j < koefs.length; ++j)
+                    constrain.addTerm(constrains_koef[i][j], x[j]);
+                model.addGe(constrain, constrains_results[i]);
+            }
+
+            boolean solved = model.solve();
+            if(solved)
+            {
+                double obj_value = model.getObjValue();
+                System.out.println("obj_value = " + obj_value);
+
+                for(int i = 0; i < x.length; ++i)
+                    System.out.println("x[" + (i + 1) + "] = " + model.getValue(x[i]));
+            }
+            else
+            {
+                System.out.println("Not solved.");
+            }
+        }
+        catch(IloException ex)
+        {
+            ex.printStackTrace();
         }
     }
 }
