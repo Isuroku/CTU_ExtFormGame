@@ -9,8 +9,7 @@ import ilog.cplex.IloCplex;
 import javafx.util.Pair;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Stack;
+import java.util.*;
 
 public class Main
 {
@@ -143,9 +142,10 @@ public class Main
         CMap map = null;
 
         int bandit_count = 0;
-        int danger_count = 0;
         float kill_probability = 0;
         Vector2D start_pos = null;
+
+        ArrayList<Vector2D> dangerous_places = new ArrayList<>();
 
         while(!line.isEmpty())
         {
@@ -170,7 +170,7 @@ public class Main
                     {
                         map.SetCellType(i, line_count, t);
                         if(t == 'E')
-                            danger_count++;
+                            dangerous_places.add(new Vector2D(i, line_count));
                     }
                 }
             }
@@ -183,17 +183,123 @@ public class Main
             line_count++;
         }
 
-        CNode root = new CNode(start_pos, null, bandit_count, danger_count, 1, 0, (char)0, (char)0);
-        CreateTree(root, map, kill_probability);
+        System.out.println();
+        System.out.println("Search a utility of a strategy combination.");
+
+        ArrayList<CNode> game_nodes = new ArrayList<>();
+
+        HashMap constrains_agent = new HashMap<String, ConstrainExpression>();
+        HashMap names_bandit = new HashMap<String, TwoNames>();
+
+        PlaceGen gen = new PlaceGen(dangerous_places.size(), bandit_count);
+        Integer[] places = gen.NextGen();
+        while(places != null)
+        {
+            Vector2D[] bandit_set = new Vector2D[places.length];
+
+            StringBuilder sb = new StringBuilder("set(");
+
+            for(int i = 0; i < places.length; i++)
+            {
+                Vector2D pos = dangerous_places.get(places[i]);
+                bandit_set[i] = pos;
+                if(i == 0)
+                    sb.append(pos);
+                else
+                    sb.append(", " + pos);
+            }
+            sb.append(")");
+
+            CNode bn = new CNode(ENodeType.Bandit, start_pos, null, sb.toString(), bandit_set);
+            game_nodes.add(bn);
+            CreateTree(bn, map, kill_probability, dangerous_places);
+
+            //bn.PrintPath("");
+            ArrayList<CStrategiesUtil> utils = new ArrayList<>();
+            bn.CollectUtils("", "", 1, 0, utils);
+
+            for(CStrategiesUtil u: utils )
+            {
+                String as = u.GetAgentStrategy();
+                ConstrainExpression agent_expr = (ConstrainExpression) constrains_agent.get(as);
+                if(agent_expr == null)
+                {
+                    agent_expr = new ConstrainExpression(as, true, constrains_agent.size(), u.IsApproched(), u.GetMaxUtility());
+                    constrains_agent.put(as, agent_expr);
+                }
+
+                String bs = u.GetBanditStrategy();
+                TwoNames bandit_names = (TwoNames) names_bandit.get(bs);
+                if(bandit_names == null)
+                {
+                    bandit_names = new TwoNames(bs, false, names_bandit.size());
+                    names_bandit.put(bs, bandit_names);
+                }
+
+                agent_expr.AddTerm(new ConstrainTerm(bandit_names, u.GetUtility()));
+
+                System.out.println(u);
+            }
+            System.out.println();
+
+            places = gen.NextGen();
+        }
+
+        System.out.println("Short names for Bandit strategies:");
+        for(Object entry: names_bandit.entrySet())
+        {
+            HashMap.Entry<String, TwoNames> e = (HashMap.Entry<String, TwoNames>)entry;
+            TwoNames value = e.getValue();
+            System.out.println(value.ShortName() + ": " + value.FullName());
+        }
+
+        System.out.println();
+        System.out.println("Agent strategies:");
+        ArrayList<ConstrainExpression> expressions = new ArrayList<>();
+        for (Object entry: constrains_agent.entrySet())
+        {
+            HashMap.Entry<String, ConstrainExpression> e = (HashMap.Entry<String, ConstrainExpression>)entry;
+
+            ConstrainExpression value = e.getValue();
+            if(value.IsApproched())
+            {
+                expressions.add(value);
+
+                //System.out.println(value.Names().ShortName() + ": " + value.Names().FullName());
+                System.out.println(value.GetExpression(false, true));
+            }
+        }
+
+        int koef_count = names_bandit.size();
+
+        double[] koefs = new double[koef_count];
+        for(int k = 0; k < koef_count; k++)
+        {
+            koefs[k] = 1;
+        }
+
+        double[] constrains_results = new double[expressions.size()];
+        double[][] constrains_koef = new double[expressions.size()][koef_count];
+        for(int e = 0; e < expressions.size(); e++)
+        {
+            ConstrainExpression expr = expressions.get(e);
+            for(int k = 0; k < koef_count; k++)
+            {
+                constrains_koef[e][k] = expr.GetKoef(k);
+            }
+
+            constrains_results[e] = 1;
+        }
+
+        solveModel(koefs, true, constrains_koef, constrains_results);
     }
 
-    static void CreateTree(CNode root, CMap map, float kill_probability) throws IloException
+    static void CreateTree(CNode root, CMap map, float kill_probability, ArrayList<Vector2D> dangerous_places) throws IloException
     {
-        System.out.printf("\n");
-        ArrayList<CStrategiesUtil> strategies = new ArrayList<>();
-
         Stack<CNode> node_stack = new Stack<>();
         node_stack.push(root);
+
+        boolean need_jump = true;
 
         while(!node_stack.empty())
         {
@@ -201,7 +307,6 @@ public class Main
 
             Vector2D pos = node.GetPos();
 
-            boolean was_added = false;
             Pair<Character, Vector2D>[] nposes = pos.GetNeighbours(map.GetMapRect());
             for(Pair<Character, Vector2D> p: nposes)
             {
@@ -210,89 +315,100 @@ public class Main
                     CMapCell cell = map.GetCell(p.getValue());
                     if(cell.IsPassable())
                     {
-                        CNode child_node = null;
                         switch(cell.GetCellType())
                         {
                             case Exit:
                             {
-                                CStrategiesUtil u = new CStrategiesUtil(node.GetAgentStrategy() + p.getKey(),
-                                                                        node.GetBanditStrategy(),
-                                                                    (node.GetUtility() + 10) * node.GetProbability());
-                                strategies.add(u);
-                                int sz = strategies.size();
-                                System.out.printf("%d: %s\n", sz, u);
-                                was_added = true;
+                                CNode child = new CNode(ENodeType.Agent, p.getValue(), node, p.getKey() + "E", true);
+                                child.AddPayoff(10);
+                                node.AddChild(child);
                             }
                             break;
                             case Danger:
                             {
-                                if(node.GetBanditCount() > 0)
+                                CNode child = new CNode(ENodeType.Agent, p.getValue(), node, p.getKey());
+                                node.AddChild(child);
+
+                                Vector2D[] bandit_set = node.GetBanditSet();
+
+                                if(IsContains(p.getValue(), bandit_set))
                                 {
-                                    was_added = true;
+                                    CNode killed = new CNode(ENodeType.Nature, p.getValue(), child, 'K', kill_probability);
+                                    killed.AddPayoff(0);
+                                    child.AddChild(killed);
 
-                                    //kill
-                                    CStrategiesUtil u = new CStrategiesUtil(node.GetAgentStrategy() + p.getKey(), node.GetBanditStrategy() + 'k', 0);
-                                    strategies.add(u);
-                                    int sz = strategies.size();
-                                    System.out.printf("%d: %s\n", sz, u);
-
-                                    child_node = new CNode(p.getValue(), node, node.GetBanditCount(), node.GetDangerCount() - 1, 1, 0, p.getKey(), (char) 0);
-
-                                    float was_bandit_probability = node.GetBanditCount() / (float) node.GetDangerCount();
-
-                                    //miss
-                                    float was_bandit_miss_probability = was_bandit_probability * (1 - kill_probability);
-                                    CNode bandit_node = new CNode(p.getValue(), child_node, child_node.GetBanditCount() - 1, child_node.GetDangerCount(),
-                                            was_bandit_miss_probability, 0, (char) 0, 'm');
-                                    node_stack.push(bandit_node);
-
-                                    //bandit absent
-                                    float was_not_bandit_probability = 1 - was_bandit_probability;
-                                    bandit_node = new CNode(p.getValue(), child_node, child_node.GetBanditCount(), child_node.GetDangerCount(),
-                                            was_not_bandit_probability, 0, (char) 0, 'a');
-                                    node_stack.push(bandit_node);
-                                } else
-                                {
-                                    child_node = new CNode(p.getValue(), node, node.GetBanditCount(), node.GetDangerCount(), 1, 0, p.getKey(), (char) 0);
-                                    node_stack.push(child_node);
-                                    was_added = true;
+                                    CNode missed = new CNode(ENodeType.Nature, p.getValue(), child, 'M', 1 - kill_probability);
+                                    child.AddChild(missed);
+                                    node_stack.push(missed);
                                 }
+                                else if(need_jump)
+                                {
+                                    CNode no_jump = new CNode(ENodeType.Bandit, p.getValue(), child, "no jump");
+                                    child.AddChild(no_jump);
+                                    node_stack.push(no_jump);
+
+                                    for(int b = 0; b < bandit_set.length; b++)
+                                        for(int pl = 0; pl < dangerous_places.size(); pl++)
+                                        {
+                                            Vector2D v = dangerous_places.get(pl);
+
+                                            if(!p.getValue().equals(v) && !IsContains(v, bandit_set))
+                                            {
+                                                Vector2D[] new_bandit_set = Arrays.copyOf(bandit_set, bandit_set.length);
+                                                new_bandit_set[b] = v;
+
+                                                String s = String.format("jump(%s-%s)", bandit_set[b], v);
+                                                CNode jump = new CNode(ENodeType.Bandit, p.getValue(), child, s, new_bandit_set);
+                                                child.AddChild(jump);
+                                                node_stack.push(jump);
+                                            }
+                                        }
+                                }
+                                else
+                                {
+                                    node_stack.push(child);
+                                }
+
+                                need_jump = false;
                             }
                             break;
                             case Gold:
                             {
-                                child_node = new CNode(p.getValue(), node, node.GetBanditCount(), node.GetDangerCount(), 1, 1, p.getKey(), (char) 0);
-                                node_stack.push(child_node);
-                                was_added = true;
+                                CNode child = new CNode(ENodeType.Agent, p.getValue(), node, p.getKey() + "(g)");
+                                child.AddPayoff(1);
+                                node.AddChild(child);
+                                node_stack.push(child);
                             }
                             break;
                             case Empty:
                             {
-                                child_node = new CNode(p.getValue(), node, node.GetBanditCount(), node.GetDangerCount(), 1, 0, p.getKey(), (char) 0);
-                                node_stack.push(child_node);
-                                was_added = true;
+                                CNode child = new CNode(ENodeType.Agent, p.getValue(), node, p.getKey());
+                                node.AddChild(child);
+                                node_stack.push(child);
                             }
                             break;
                         }
                     }
                 }
             }
-
-            if(!was_added)
-            {
-                CStrategiesUtil u = new CStrategiesUtil(node.GetAgentStrategy(), node.GetBanditStrategy(), 0);
-                strategies.add(u);
-                int sz = strategies.size();
-                System.out.printf("%d: %s\n", sz, u);
-            }
         }
+    }
+
+    static boolean IsContains(Vector2D pos, Vector2D[] places)
+    {
+        for(int b2 = 0; b2 < places.length; b2++)
+            if(places[b2].equals(pos))
+                return true;
+        return false;
     }
 
     static void SolveTest()
     {
+        //https://www.youtube.com/watch?v=oA86HCkCg5k
         double[] koefs = {41, 35, 96};
         double[][] constrains_koef = {{2, 3, 7}, {1, 1, 0}, {5, 3, 0}, {0.6, 0.25, 1}};
         double[] constrains_results = {1250, 250, 900, 232.5};
+
 
         solveModel(koefs, true, constrains_koef, constrains_results);
     }
@@ -315,24 +431,31 @@ public class Main
             for(int i = 0; i < koefs.length; ++i)
                 obj.addTerm(koefs[i], x[i]);
 
-            model.addMinimize(obj);
+            //model.addMinimize(obj);
+            model.addMaximize(obj);
 
             for(int i =0; i < constrains_koef.length; i++)
             {
                 IloLinearNumExpr constrain = model.linearNumExpr();
                 for(int j = 0; j < koefs.length; ++j)
                     constrain.addTerm(constrains_koef[i][j], x[j]);
-                model.addGe(constrain, constrains_results[i]);
+                //model.addGe(constrain, constrains_results[i]);
+                model.addLe(constrain, constrains_results[i]);
             }
 
             boolean solved = model.solve();
             if(solved)
             {
                 double obj_value = model.getObjValue();
-                System.out.println("obj_value = " + obj_value);
+                double z = 1 / obj_value;
+                System.out.println(String.format("Game Result = %f ", z));
 
                 for(int i = 0; i < x.length; ++i)
-                    System.out.println("x[" + (i + 1) + "] = " + model.getValue(x[i]));
+                {
+                    double mv = model.getValue(x[i]);
+                    double p = mv * z;
+                    System.out.println(String.format("Bandit strategy probability [%d] = %f", i, p));
+                }
             }
             else
             {

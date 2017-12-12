@@ -2,8 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="85579b68-0108-4988-a39b-3546eb8721a3" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ekimoiva/ConstrainExpression.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ekimoiva/ConstrainTerm.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ekimoiva/ENodeType.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ekimoiva/PlaceGen.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ekimoiva/TwoNames.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/CTU_ExtFormGame.iml" afterPath="$PROJECT_DIR$/CTU_ExtFormGame.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ekimoiva/CNode.java" afterPath="$PROJECT_DIR$/src/ekimoiva/CNode.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ekimoiva/CStrategiesUtil.java" afterPath="$PROJECT_DIR$/src/ekimoiva/CStrategiesUtil.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ekimoiva/Main.java" afterPath="$PROJECT_DIR$/src/ekimoiva/Main.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -19,8 +25,8 @@
       <file leaf-file-name="Main.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/ekimoiva/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="475">
-              <caret line="286" column="13" lean-forward="true" selection-start-line="286" selection-start-column="13" selection-end-line="286" selection-end-column="13" />
+            <state relative-caret-position="270">
+              <caret line="267" column="18" lean-forward="false" selection-start-line="267" selection-start-column="18" selection-end-line="267" selection-end-column="18" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="method#CreateExample1#0;class#Main#0" expanded="false" />
@@ -29,29 +35,54 @@
                 <element signature="method#ReadLineFromExample1#0;class#Main#0" expanded="false" />
                 <element signature="method#ReadLineFromExample2#0;class#Main#0" expanded="false" />
                 <element signature="method#ReadLineFromExample3#0;class#Main#0" expanded="false" />
+                <element signature="method#CreateTree#0;class#Main#0" expanded="false" />
+                <element signature="method#IsContains#0;class#Main#0" expanded="false" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="IloModeler.class" pinned="false" current-in-tab="false">
-        <entry file="jar://F:/CPLEX_Studio124/cplex/lib/cplex.jar!/ilog/concert/IloModeler.class">
+      <file leaf-file-name="ConstrainExpression.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/ekimoiva/ConstrainExpression.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="95">
-              <caret line="8" column="57" lean-forward="false" selection-start-line="8" selection-start-column="57" selection-end-line="8" selection-end-column="57" />
-              <folding />
+            <state relative-caret-position="198">
+              <caret line="35" column="113" lean-forward="false" selection-start-line="35" selection-start-column="113" selection-end-line="35" selection-end-column="113" />
+              <folding>
+                <element signature="e#644#645#0" expanded="true" />
+                <element signature="e#676#677#0" expanded="true" />
+                <element signature="e#711#712#0" expanded="true" />
+                <element signature="e#740#741#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="CStrategiesUtil.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/ekimoiva/CStrategiesUtil.java">
+      <file leaf-file-name="ConstrainTerm.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/ekimoiva/ConstrainTerm.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="38">
-              <caret line="2" column="28" lean-forward="false" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="28" />
+            <state relative-caret-position="570">
+              <caret line="30" column="23" lean-forward="false" selection-start-line="30" selection-start-column="23" selection-end-line="30" selection-end-column="23" />
               <folding>
-                <element signature="e#514#515#0" expanded="true" />
-                <element signature="e#589#590#0" expanded="true" />
+                <element signature="e#552#553#0" expanded="true" />
+                <element signature="e#592#593#0" expanded="true" />
+                <element signature="e#621#622#0" expanded="true" />
+                <element signature="e#651#652#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="TwoNames.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/ekimoiva/TwoNames.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="494">
+              <caret line="26" column="5" lean-forward="true" selection-start-line="26" selection-start-column="5" selection-end-line="26" selection-end-column="5" />
+              <folding>
+                <element signature="e#293#294#0" expanded="true" />
+                <element signature="e#326#327#0" expanded="true" />
+                <element signature="e#363#364#0" expanded="true" />
+                <element signature="e#435#436#0" expanded="true" />
+                <element signature="e#497#498#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -60,40 +91,18 @@
       <file leaf-file-name="CNode.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/ekimoiva/CNode.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="589">
-              <caret line="31" column="48" lean-forward="false" selection-start-line="31" selection-start-column="48" selection-end-line="31" selection-end-column="48" />
+            <state relative-caret-position="221">
+              <caret line="136" column="28" lean-forward="false" selection-start-line="136" selection-start-column="28" selection-end-line="136" selection-end-column="28" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="CMap.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/ekimoiva/Map/CMap.java">
+      <file leaf-file-name="CStrategiesUtil.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/ekimoiva/CStrategiesUtil.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="19">
-              <caret line="1" column="0" lean-forward="false" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="CMapCell.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/ekimoiva/Map/CMapCell.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="380">
-              <caret line="22" column="36" lean-forward="false" selection-start-line="22" selection-start-column="36" selection-end-line="22" selection-end-column="36" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Pair.java" pinned="false" current-in-tab="false">
-        <entry file="jar://F:/Java9/lib/src.zip!/javafx.base/javafx/util/Pair.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="608">
-              <caret line="56" column="25" lean-forward="false" selection-start-line="56" selection-start-column="25" selection-end-line="56" selection-end-column="25" />
+            <state relative-caret-position="418">
+              <caret line="22" column="53" lean-forward="true" selection-start-line="22" selection-start-column="4" selection-end-line="22" selection-end-column="53" />
               <folding />
             </state>
           </provider>
@@ -127,12 +136,19 @@
       <list>
         <option value="$PROJECT_DIR$/src/ekimoiva/Rect2D.java" />
         <option value="$PROJECT_DIR$/src/ekimoiva/Vector2D.java" />
-        <option value="$PROJECT_DIR$/src/ekimoiva/CStrategiesUtil.java" />
         <option value="$PROJECT_DIR$/src/ekimoiva/Map/CMap.java" />
         <option value="$PROJECT_DIR$/src/ekimoiva/Map/CellType.java" />
         <option value="$PROJECT_DIR$/src/ekimoiva/Map/CMapCell.java" />
-        <option value="$PROJECT_DIR$/src/ekimoiva/CNode.java" />
         <option value="F:/CPLEX_Studio124/cplex/lib/cplex.jar!/ilog/concert/IloNumVar.class" />
+        <option value="$PROJECT_DIR$/src/ekimoiva/PlaceGen.java" />
+        <option value="$PROJECT_DIR$/src/ekimoiva/GameNode.java" />
+        <option value="$PROJECT_DIR$/src/ekimoiva/BanditSetPlaceNode.java" />
+        <option value="$PROJECT_DIR$/src/ekimoiva/ENodeType.java" />
+        <option value="$PROJECT_DIR$/src/ekimoiva/CNode.java" />
+        <option value="$PROJECT_DIR$/src/ekimoiva/CStrategiesUtil.java" />
+        <option value="$PROJECT_DIR$/src/ekimoiva/TwoNames.java" />
+        <option value="$PROJECT_DIR$/src/ekimoiva/ConstrainTerm.java" />
+        <option value="$PROJECT_DIR$/src/ekimoiva/ConstrainExpression.java" />
         <option value="$PROJECT_DIR$/src/ekimoiva/Main.java" />
       </list>
     </option>
@@ -189,35 +205,6 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="ekimoiva" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="CTU_ExtFormGame" type="b2602c69:ProjectViewProjectNode" />
-              <item name="CTU_ExtFormGame" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="ekimoiva" type="462c0819:PsiDirectoryNode" />
-              <item name="Map" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="CTU_ExtFormGame" type="b2602c69:ProjectViewProjectNode" />
-              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
-            </path>
-            <path>
-              <item name="CTU_ExtFormGame" type="b2602c69:ProjectViewProjectNode" />
-              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
-              <item name="cplex.jar" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="CTU_ExtFormGame" type="b2602c69:ProjectViewProjectNode" />
-              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
-              <item name="cplex.jar" type="462c0819:PsiDirectoryNode" />
-              <item name="ilog" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="CTU_ExtFormGame" type="b2602c69:ProjectViewProjectNode" />
-              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
-              <item name="cplex.jar" type="462c0819:PsiDirectoryNode" />
-              <item name="ilog" type="462c0819:PsiDirectoryNode" />
-              <item name="cplex" type="462c0819:PsiDirectoryNode" />
-            </path>
           </expand>
           <select />
         </subPane>
@@ -248,7 +235,7 @@
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
       <option name="MAIN_CLASS_NAME" value="ekimoiva.Main" />
       <option name="VM_PARAMETERS" value="" />
-      <option name="PROGRAM_PARAMETERS" value="2" />
+      <option name="PROGRAM_PARAMETERS" value="3" />
       <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
       <option name="ALTERNATIVE_JRE_PATH" />
@@ -296,6 +283,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="54" y="-8" width="1874" height="1096" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -303,7 +291,7 @@
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32960325" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.46490335" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.46286878" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -311,7 +299,7 @@
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2899288" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24923703" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -326,7 +314,15 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="11" />
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/ekimoiva/Main.java</url>
+          <line>445</line>
+          <properties />
+          <option name="timeStamp" value="25" />
+        </line-breakpoint>
+      </breakpoints>
+      <option name="time" value="27" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -343,6 +339,76 @@
             <element signature="method#ReadLineFromExample1#0;class#Main#0" expanded="false" />
             <element signature="method#ReadLineFromExample2#0;class#Main#0" expanded="false" />
             <element signature="method#ReadLineFromExample3#0;class#Main#0" expanded="false" />
+            <element signature="method#CreateTree#0;class#Main#0" expanded="false" />
+            <element signature="method#IsContains#0;class#Main#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://F:/CPLEX_Studio124/cplex/lib/cplex.jar!/ilog/concert/IloModeler.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="95">
+          <caret line="8" column="57" lean-forward="false" selection-start-line="8" selection-start-column="57" selection-end-line="8" selection-end-column="57" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ekimoiva/CStrategiesUtil.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="38">
+          <caret line="2" column="28" lean-forward="false" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="28" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ekimoiva/CNode.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="589">
+          <caret line="31" column="48" lean-forward="false" selection-start-line="31" selection-start-column="48" selection-end-line="31" selection-end-column="48" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ekimoiva/Map/CMap.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="19">
+          <caret line="1" column="0" lean-forward="false" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ekimoiva/Map/CMapCell.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="380">
+          <caret line="22" column="36" lean-forward="false" selection-start-line="22" selection-start-column="36" selection-end-line="22" selection-end-column="36" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://F:/Java9/lib/src.zip!/javafx.base/javafx/util/Pair.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1064">
+          <caret line="56" column="25" lean-forward="false" selection-start-line="56" selection-start-column="25" selection-end-line="56" selection-end-column="25" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ekimoiva/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#CreateExample1#0;class#Main#0" expanded="false" />
+            <element signature="method#CreateExample2#0;class#Main#0" expanded="false" />
+            <element signature="method#CreateExample3#0;class#Main#0" expanded="false" />
+            <element signature="method#ReadLineFromExample1#0;class#Main#0" expanded="false" />
+            <element signature="method#ReadLineFromExample2#0;class#Main#0" expanded="false" />
+            <element signature="method#ReadLineFromExample3#0;class#Main#0" expanded="false" />
+            <element signature="method#CreateTree#0;class#Main#0" expanded="false" />
+            <element signature="method#IsContains#0;class#Main#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -351,10 +417,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="38">
           <caret line="2" column="28" lean-forward="false" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="28" />
-          <folding>
-            <element signature="e#514#515#0" expanded="true" />
-            <element signature="e#589#590#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -404,6 +467,8 @@
             <element signature="method#ReadLineFromExample1#0;class#Main#0" expanded="false" />
             <element signature="method#ReadLineFromExample2#0;class#Main#0" expanded="false" />
             <element signature="method#ReadLineFromExample3#0;class#Main#0" expanded="false" />
+            <element signature="method#CreateTree#0;class#Main#0" expanded="false" />
+            <element signature="method#IsContains#0;class#Main#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -484,25 +549,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/ekimoiva/CStrategiesUtil.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="38">
-          <caret line="2" column="28" lean-forward="false" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="28" />
-          <folding>
-            <element signature="e#514#515#0" expanded="true" />
-            <element signature="e#589#590#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ekimoiva/Vector2D.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="236">
-          <caret line="22" column="19" lean-forward="false" selection-start-line="22" selection-start-column="19" selection-end-line="22" selection-end-column="19" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/ekimoiva/Map/CellType.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="152">
@@ -527,19 +573,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/ekimoiva/CNode.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="589">
-          <caret line="31" column="48" lean-forward="false" selection-start-line="31" selection-start-column="48" selection-end-line="31" selection-end-column="48" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://F:/CPLEX_Studio124/cplex/lib/cplex.jar!/ilog/concert/IloNumVar.class">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="133">
           <caret line="7" column="17" lean-forward="false" selection-start-line="7" selection-start-column="17" selection-end-line="7" selection-end-column="17" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -551,10 +588,114 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/ekimoiva/PlaceGen.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="114">
+          <caret line="21" column="52" lean-forward="true" selection-start-line="21" selection-start-column="52" selection-end-line="21" selection-end-column="52" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://F:/Java9/lib/src.zip!/java.base/java/util/ArrayList.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="319">
+          <caret line="106" column="13" lean-forward="false" selection-start-line="106" selection-start-column="13" selection-end-line="106" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ekimoiva/Vector2D.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="304">
+          <caret line="22" column="19" lean-forward="false" selection-start-line="22" selection-start-column="19" selection-end-line="22" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ekimoiva/ENodeType.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="38">
+          <caret line="2" column="12" lean-forward="true" selection-start-line="2" selection-start-column="12" selection-end-line="2" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ekimoiva/BanditSetPlaceNode.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="114">
+          <caret line="6" column="0" lean-forward="true" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://F:/Java9/lib/src.zip!/java.base/java/util/HashMap.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="254">
+          <caret line="1003" column="31" lean-forward="false" selection-start-line="1003" selection-start-column="31" selection-end-line="1003" selection-end-column="31" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ekimoiva/CNode.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="136" column="28" lean-forward="false" selection-start-line="136" selection-start-column="28" selection-end-line="136" selection-end-column="28" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ekimoiva/CStrategiesUtil.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="418">
+          <caret line="22" column="53" lean-forward="true" selection-start-line="22" selection-start-column="4" selection-end-line="22" selection-end-column="53" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ekimoiva/TwoNames.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="494">
+          <caret line="26" column="5" lean-forward="true" selection-start-line="26" selection-start-column="5" selection-end-line="26" selection-end-column="5" />
+          <folding>
+            <element signature="e#293#294#0" expanded="true" />
+            <element signature="e#326#327#0" expanded="true" />
+            <element signature="e#363#364#0" expanded="true" />
+            <element signature="e#435#436#0" expanded="true" />
+            <element signature="e#497#498#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ekimoiva/ConstrainTerm.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="570">
+          <caret line="30" column="23" lean-forward="false" selection-start-line="30" selection-start-column="23" selection-end-line="30" selection-end-column="23" />
+          <folding>
+            <element signature="e#552#553#0" expanded="true" />
+            <element signature="e#592#593#0" expanded="true" />
+            <element signature="e#621#622#0" expanded="true" />
+            <element signature="e#651#652#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ekimoiva/ConstrainExpression.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="198">
+          <caret line="35" column="113" lean-forward="false" selection-start-line="35" selection-start-column="113" selection-end-line="35" selection-end-column="113" />
+          <folding>
+            <element signature="e#644#645#0" expanded="true" />
+            <element signature="e#676#677#0" expanded="true" />
+            <element signature="e#711#712#0" expanded="true" />
+            <element signature="e#740#741#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/ekimoiva/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="475">
-          <caret line="286" column="13" lean-forward="true" selection-start-line="286" selection-start-column="13" selection-end-line="286" selection-end-column="13" />
+        <state relative-caret-position="270">
+          <caret line="267" column="18" lean-forward="false" selection-start-line="267" selection-start-column="18" selection-end-line="267" selection-end-column="18" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="method#CreateExample1#0;class#Main#0" expanded="false" />
@@ -563,6 +704,8 @@
             <element signature="method#ReadLineFromExample1#0;class#Main#0" expanded="false" />
             <element signature="method#ReadLineFromExample2#0;class#Main#0" expanded="false" />
             <element signature="method#ReadLineFromExample3#0;class#Main#0" expanded="false" />
+            <element signature="method#CreateTree#0;class#Main#0" expanded="false" />
+            <element signature="method#IsContains#0;class#Main#0" expanded="false" />
           </folding>
         </state>
       </provider>
